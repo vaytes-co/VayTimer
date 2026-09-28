@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VayTimer</title>
+  <meta name="theme-color" content="#6475ff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">VT</div>
+      <div>
+        <h1>VayTimer</h1>
+        <p>Timer sinkron untuk latihan bersama.</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="room-pill" id="copyRoomBtn" title="Salin link room">
+        <span>↗</span>
+        <strong>Room <span id="roomCode">------</span></strong>
+        <span>⧉</span>
+      </button>
+      <div class="connection-pill">
+        <span class="connection-dot" id="connectionDot"></span>
+        <span id="connectionText">Menghubungkan...</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="duration-card glass">
+      <div class="section-heading">
+        <span class="heading-icon">◷</span>
+        <div>
+          <h2>Durasi</h2>
+          <p>Pilih durasi timer yang ingin digunakan.</p>
+        </div>
+      </div>
+
+      <div class="duration-grid">
+        <button class="duration-btn" data-duration="60">
+          <span class="duration-icon">⏱</span>
+          <strong>1 Menit</strong>
+          <small>60 detik</small>
+        </button>
+
+        <button class="duration-btn" data-duration="90">
+          <span class="duration-icon">⏱</span>
+          <strong>1,5 Menit</strong>
+          <small>90 detik</small>
+        </button>
+
+        <button class="duration-btn active" data-duration="120">
+          <span class="duration-icon">⏱</span>
+          <strong>2 Menit</strong>
+          <small>120 detik</small>
+          <i>✓</i>
+        </button>
+
+        <button class="duration-btn" data-duration="180">
+          <span class="duration-icon">⏱</span>
+          <strong>3 Menit</strong>
+          <small>180 detik</small>
+        </button>
+      </div>
+
+      <div class="encourage">
+        <span>i</span>
+        <div>
+          <strong>Gunakan room yang sama</strong>
+          <p>Bagikan link room agar timer tersinkron di perangkat lain.</p>
+        </div>
+        <b>↗</b>
+      </div>
+    </section>
+
+    <section class="timer-area">
+      <div class="timer-ring" id="timerRing">
+        <div class="timer-inner">
+          <span class="timer-label" id="timerLabel">Waktu Tersisa</span>
+          <div class="time" id="timeDisplay">02:00</div>
+          <span class="selected-label" id="selectedLabel">2 Menit</span>
+        </div>
+      </div>
+
+      <div class="main-actions">
+        <button class="start-btn" id="startBtn">
+          <span id="startIcon">▶</span>
+          <span id="startText">Mulai</span>
+        </button>
+
+        <div class="secondary-actions">
+          <button class="secondary-btn" id="pauseBtn" disabled>
+            <span>Ⅱ</span> Jeda
+          </button>
+          <button class="secondary-btn" id="resetBtn">
+            <span>↻</span> Reset
+          </button>
+        </div>
+      </div>
+
+      <div class="sync-message" id="syncMessage">
+        <span>●</span> Menunggu kamu mulai...
+      </div>
+    </section>
+
+    <aside class="motivation-card">
+      <div class="motivation-overlay">
+        <div class="paperclip">1</div>
+        <h2>Cara<br><em>Mulai</em></h2>
+        <p>1. Pilih durasi.<br>2. Bagikan link room.<br>3. Tekan Mulai.</p>
+        <div class="line"></div>
+        <span class="mini-heart">VT</span>
+      </div>
+    </aside>
+  </main>
+
+  <section class="bottom-grid">
+    <div class="info-card glass">
+      <div class="info-title"><span>⌁</span> Status</div>
+      <div class="status-value">
+        <span class="status-light" id="statusLight"></span>
+        <strong id="statusValue">Menunggu...</strong>
+      </div>
+      <p id="statusDescription">Menghubungkan ke room.</p>
+    </div>
+
+    <div class="info-card glass room-info">
+      <div class="info-title"><span>♧</span> Room</div>
+      <div class="room-value">
+        <strong id="roomCodeBottom">------</strong>
+        <button id="copyCodeBtn" title="Salin kode">⧉</button>
+      </div>
+      <p>Bagikan link ini ke perangkat lain.</p>
+      <button class="copy-link-btn" id="copyLinkBtn">↗ &nbsp; Salin Link</button>
+    </div>
+
+    <div class="info-card glass">
+      <div class="info-title"><span>✓</span> Fitur</div>
+      <ul>
+        <li>Sinkronisasi timer secara real-time</li>
+        <li>Room otomatis melalui link</li>
+        <li>Bisa digunakan di berbagai perangkat</li>
+        <li>Tanpa instalasi aplikasi</li>
+      </ul>
+    </div>
+
+    <div class="quote-mini">
+      VayTimer<br><small>Timer sinkron<br>antar perangkat.</small>
+    </div>
+  </section>
+
+  <div class="toast" id="toast">Tersalin!</div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
